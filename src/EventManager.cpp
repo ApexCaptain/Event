@@ -63,7 +63,6 @@ class EventManager {
 };
 
 EventManager* eventManager = new EventManager();
-#include<Arduino.h>
 class EventDataPair {
     public :
         std::string event;
@@ -112,16 +111,6 @@ Evt::ListenerId Evt::multiplePrepend(std::initializer_list<std::string> events, 
 
 void Evt::emit(std::string event, std::string dataString) {
     eventQueue.push_back(new EventDataPair(event, dataString));
-    /*
-    ContainerIterator containerEntry = eventManager -> containerMap.find(event);
-    if(containerEntry != eventManager -> containerMap.end() && containerEntry -> second.size() > 0) {
-        for_each(containerEntry -> second.begin(), containerEntry -> second.end(), [dataString](ListenerContainer* eachListenerContainer){
-            if(eachListenerContainer -> isEnabled) {
-
-            }
-        });
-    }
-    */
 }
 
 void Evt::remove(const Evt::ListenerId listenerId) {
